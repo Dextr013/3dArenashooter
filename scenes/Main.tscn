@@ -1,0 +1,40 @@
+[gd_scene load_steps=15 format=3 uid="uid://b2en87sp3li68"]
+
+[ext_resource type="PackedScene" path="res://scenes/environment/Arena.tscn" id="1_x8i43"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2_dtfle"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="3_gsr8n"]
+[ext_resource type="PackedScene" path="res://scenes/management/WaveManager.tscn" id="4_6ec7v"]
+[ext_resource type="Resource" path="res://scenes/default_env.tres" id="5_cou37"]
+
+[ext_resource type="Script" path="res://scripts/management/game_manager.gd" id="6_uew6p"]
+
+[node name="Main" type="Node3D"]
+script=ExtResource("6_uew6p")
+
+[node name="Environment" parent="." index="0" instance=ExtResource("1_x8i43")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("2_dtfle")]
+
+[node name="WaveManager" parent="." index="2" instance=ExtResource("4_6ec7v")]
+
+[node name="HUD" parent="." index="3" instance=ExtResource("3_gsr8n")]
+
+[connection signal="update_wave" from="WaveManager" to="HUD" method="update_wave"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+environment=ExtResource("5_cou37")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." index="5"]
+transform=Transform3D(0.866025, -0.433013, 0.25, 0.0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0.0, 4.0, 0.0)
+shadow_enabled=true
+directional_shadow_mode=1
+
+[node name="Audio" type="Node" parent="." index="6"]
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio" index="0"]
+volume_db=-6.0
+autoplay=true
+bus="Music"
+
+[node name="SFX" type="AudioStreamPlayer" parent="Audio" index="1"]
+bus="SFX"

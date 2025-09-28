@@ -1,0 +1,4 @@
+[gd_resource type="ArrayMesh" format=3]
+
+[resource]
+surface_0/mesh=LoadedResource("res://animated-characters player/Model/characterMedium.fbx")

@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5nv4j01ke3g1"]
+
+[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaFloor.mesh" id="1_4h311"]
+[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaWall.mesh" id="2_m4pxj"]
+[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaPillar.mesh" id="3_0ph85"]
+[ext_resource type="PackedScene" path="res://scenes/environment/SpawnPoint.tscn" id="4_mjb8n"]
+
+[node name="Arena" type="Node3D"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="0"]
+shape=ConcavePolygonShape3D(data=PackedVector3Array(-20, 0, -20, 20, 0, -20, 20, 0, 20, -20, 0, 20))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Floor" index="1"]
+mesh=ExtResource("1_4h311")
+surface_material_override/0=SubResource("ArenaMaterial_floor")
+[node name="Walls" type="Node3D" parent="." index="1"]
+
+[node name="WallNorth" type="StaticBody3D" parent="Walls" index="0"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallNorth" index="0"]
+shape=BoxShape3D(size=Vector3(40, 10, 1))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="WallNorth" index="1"]
+mesh=ExtResource("2_m4pxj")
+surface_material_override/0=SubResource("ArenaMaterial_wall")
+
+[node name="WallSouth" type="StaticBody3D" parent="Walls" index="1"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallSouth" index="0"]
+shape=BoxShape3D(size=Vector3(40, 10, 1))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="WallSouth" index="1"]
+mesh=ExtResource("2_m4pxj")
+surface_material_override/0=SubResource("ArenaMaterial_wall")
+
+[node name="WallEast" type="StaticBody3D" parent="Walls" index="2"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallEast" index="0"]
+shape=BoxShape3D(size=Vector3(1, 10, 40))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="WallEast" index="1"]
+mesh=ExtResource("2_m4pxj")
+surface_material_override/0=SubResource("ArenaMaterial_wall")
+
+[node name="WallWest" type="StaticBody3D" parent="Walls" index="3"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallWest" index="0"]
+shape=BoxShape3D(size=Vector3(1, 10, 40))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="WallWest" index="1"]
+mesh=ExtResource("2_m4pxj")
+surface_material_override/0=SubResource("ArenaMaterial_wall")
+
+[node name="Pillars" type="Node3D" parent="." index="2"]
+
+[node name="Pillar1" type="StaticBody3D" parent="Pillars" index="0"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar1" index="0"]
+shape=BoxShape3D(size=Vector3(3, 10, 3))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Pillar1" index="1"]
+mesh=ExtResource("3_0ph85")
+surface_material_override/0=SubResource("ArenaMaterial_pillar")
+
+[node name="Pillar2" type="StaticBody3D" parent="Pillars" index="1"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar2" index="0"]
+shape=BoxShape3D(size=Vector3(3, 10, 3))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Pillar2" index="1"]
+mesh=ExtResource("3_0ph85")
+surface_material_override/0=SubResource("ArenaMaterial_pillar")
+
+[node name="Pillar3" type="StaticBody3D" parent="Pillars" index="2"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar3" index="0"]
+shape=BoxShape3D(size=Vector3(3, 10, 3))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Pillar3" index="1"]
+mesh=ExtResource("3_0ph85")
+surface_material_override/0=SubResource("ArenaMaterial_pillar")
+
+[node name="Pillar4" type="StaticBody3D" parent="Pillars" index="3"]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar4" index="0"]
+shape=BoxShape3D(size=Vector3(3, 10, 3))
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Pillar4" index="1"]
+mesh=ExtResource("3_0ph85")
+surface_material_override/0=SubResource("ArenaMaterial_pillar")
+
+[node name="SpawnPoints" type="Node3D" parent="." index="3"]
+
+[node name="SpawnNorth" parent="SpawnPoints" index="0" instance=ExtResource("4_mjb8n")]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="SpawnSouth" parent="SpawnPoints" index="1" instance=ExtResource("4_mjb8n")]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="SpawnEast" parent="SpawnPoints" index="2" instance=ExtResource("4_mjb8n")]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="SpawnWest" parent="SpawnPoints" index="3" instance=ExtResource("4_mjb8n")]
+transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="SpawnCenter" parent="SpawnPoints" index="4" instance=ExtResource("4_mjb8n")]
+
+[ext_resource type="NavigationMesh" path="res://scenes/environment/navigation/navigation_mesh.tres" id="5_ynj3s"]
+
+[node name="Navigation" type="NavigationRegion3D" parent="." index="4"]
+navigation_mesh=ExtResource("5_ynj3s")
+
+[sub_resource type="StandardMaterial3D" id="ArenaMaterial_floor"]
+albedo_color=Color(0.0901961, 0.117647, 0.141176, 1)
+roughness=0.6
+metallic=0.0
+
+[sub_resource type="StandardMaterial3D" id="ArenaMaterial_wall"]
+albedo_color=Color(0.203922, 0.243137, 0.286275, 1)
+roughness=0.7
+metallic=0.0
+
+[sub_resource type="StandardMaterial3D" id="ArenaMaterial_pillar"]
+albedo_color=Color(0.152941, 0.184314, 0.243137, 1)
+roughness=0.5
+metallic=0.0
