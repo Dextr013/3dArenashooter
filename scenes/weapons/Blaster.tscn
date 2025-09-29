@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b9i64x7bbmxey"]
+
+[ext_resource type="PackedScene" path="res://weapon texture/blaster-a.glb" id="1_rqv34"]
+[ext_resource type="Script" path="res://scripts/weapons/blaster.gd" id="2_w8y4c"]
+[ext_resource type="AudioStream" path="res://FPS SFX/Shotgun_Shot-001.wav" id="3_xp7l4"]
+[ext_resource type="AudioStream" path="res://FPS SFX/Shotgun_Pump.wav" id="4_6rise"]
+[ext_resource type="AudioStream" path="res://FPS SFX/Rocket_Explosion-001.wav" id="5_ovnqe"]
+[ext_resource type="AudioStream" path="res://FPS SFX/Rocket_Shot-001.wav" id="6_g6dqs"]
+
+[node name="Blaster" type="Node3D"]
+script=ExtResource("2_w8y4c")
+
+[node name="Model" parent="." instance=ExtResource("1_rqv34")]
+
+[node name="Muzzle" type="Marker3D" parent="."]
+translation=Vector3(0, 0.2, -1.5)
+
+[node name="ShootSFX" type="AudioStreamPlayer3D" parent="."]
+stream=ExtResource("3_xp7l4")
+bus="SFX"
+
+[node name="ReloadSFX" type="AudioStreamPlayer3D" parent="."]
+stream=ExtResource("4_6rise")
+bus="SFX"
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
+stream=ExtResource("5_ovnqe")
+bus="SFX"
+
+[node name="LoopSFX" type="AudioStreamPlayer3D" parent="."]
+stream=ExtResource("6_g6dqs")
+bus="SFX"
+autoplay=false
+unit_size=1.0

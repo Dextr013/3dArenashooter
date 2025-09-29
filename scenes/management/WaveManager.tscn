@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c331mq9pfnh18"]
+
+[ext_resource type="Script" path="res://scripts/management/wave_manager.gd" id="1_rq5en"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy.tscn" id="2_72yex"]
+
+[node name="WaveManager" type="Node"]
+script=ExtResource("1_rq5en")
+enemy_scene=ExtResource("2_72yex")
+
+[node name="SpawnTimer" type="Timer" parent="." index="0"]
+autostart=true
+wait_time=2.0
+one_shot=false

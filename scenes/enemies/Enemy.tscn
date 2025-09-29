@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvx2cba7r4nms"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_4fzpn"]
+[ext_resource type="PackedScene" path="res://animated-characters enemy/Model/characterMedium.fbx" id="2_y9nuh"]
+[ext_resource type="AudioStream" path="res://FPS SFX/Enemy_Robot_Death-001.wav" id="3_pr8vp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nb5mv"]
+radius=0.6
+height=1.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5tdb3"]
+radius=0.5
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer=4
+collision_mask=3
+script=ExtResource("1_4fzpn")
+speed=5.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+shape=SubResource("CapsuleShape3D_nb5mv")
+
+[node name="Model" parent="." index="1" instance=ExtResource("2_y9nuh")]
+
+[node name="NavigationAgent" type="NavigationAgent3D" parent="." index="2"]
+target_desired_distance=1.5
+path_desired_distance=0.5
+
+[node name="HitArea" type="Area3D" parent="." index="3"]
+collision_layer=8
+collision_mask=2
+
+[node name="CollisionShape" type="CollisionShape3D" parent="HitArea" index="0"]
+shape=SubResource("SphereShape3D_5tdb3")
+
+[node name="DeathSFX" type="AudioStreamPlayer3D" parent="." index="4"]
+stream=ExtResource("3_pr8vp")
+bus="SFX"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl90q5kcb4s78"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectile.gd" id="1_7yben"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qorro"]
+radius=0.1
+
+[sub_resource type="StandardMaterial3D" id="Material_w1eji"]
+albedo_color=Color(1, 0.7, 0.1, 1)
+emission=Color(1, 0.5, 0.2, 1)
+emission_energy=1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape_h9k0a"]
+radius=0.1
+
+[node name="Projectile" type="Area3D"]
+script=ExtResource("1_7yben")
+collision_layer=4
+collision_mask=6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+shape=SubResource("SphereShape_h9k0a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh=SubResource("SphereMesh_qorro")
+material_override=SubResource("Material_w1eji")
