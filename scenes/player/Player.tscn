@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="2_u388c"]
 [ext_resource type="PackedScene" path="res://scenes/weapons/WeaponManager.tscn" id="3_nzgfh"]
 [ext_resource type="PackedScene" path="res://scenes/camera/PlayerCamera.tscn" id="4_1h2tp"]
-[ext_resource type="AudioStream" path="res://audio/footsteps/footstep_concrete_000.ogg" id="5_w7ujx"]
+[ext_resource type="AudioStream" path="res://impact sounds/footstep_concrete_000.ogg" id="5_w7ujx"]
 
 [node name="Player" type="CharacterBody3D"]
 script=ExtResource("2_u388c")
