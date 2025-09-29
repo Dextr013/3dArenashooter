@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cn9o2s1w9y0kl"]
 
 [ext_resource type="PackedScene" path="res://scenes/player/PlayerMesh.tscn" id="1_cz9k6"]
-[ext_resource type="AnimationTree" path="res://assets/player/animations/player_anim_tree.tres" id="2_z0lsp"]
+[ext_resource type="AnimationNodeStateMachine" path="res://assets/player/animations/player_animation_state_machine.tres" id="2_z0lsp"]
 
 [node name="PlayerBody" type="Node3D"]
 

@@ -1,7 +1,0 @@
-[gd_resource type="AnimationTree" format=3]
-
-[resource]
-tree_root=AnimationNodeStateMachine{"states":{ "Idle": AnimationNodeBlendTree{ "nodes": { "Idle": AnimationNodeAnimation{ "animation": "Armature|mixamo.com|Layer0|idle" } }, "graph_offset": Vector2( -3200, -1600 ) }, "Run": AnimationNodeBlendTree{ "nodes": { "Run": AnimationNodeAnimation{ "animation": "Armature|mixamo.com|Layer0|run" } }, "graph_offset": Vector2( -3200, -1280 ) }, "Jump": AnimationNodeBlendTree{ "nodes": { "Jump": AnimationNodeAnimation{ "animation": "Armature|mixamo.com|Layer0|jump" } }, "graph_offset": Vector2( -3200, -960 ) } }, "transitions": { "Idle": { "Run": "Idle_to_Run", "Jump": "Idle_to_Jump" }, "Run": { "Idle": "Run_to_Idle", "Jump": "Run_to_Jump" }, "Jump": { "Idle": "Jump_to_Idle" } } }
-anim_player="AnimationPlayer"
-process_mode=1
-parameters/playback=NodePath("playback")

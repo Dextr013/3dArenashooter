@@ -1,0 +1,39 @@
+[gd_resource type="AnimationNodeStateMachine" format=3]
+
+[resource]
+states/Idle/node=SubResource("AnimationNodeAnimation_Idle")
+states/Idle/position=Vector2(0, 0)
+states/Run/node=SubResource("AnimationNodeAnimation_Run")
+states/Run/position=Vector2(200, 0)
+states/Jump/node=SubResource("AnimationNodeAnimation_Jump")
+states/Jump/position=Vector2(400, 0)
+transitions/Idle/Run=SubResource("Transition_Idle_Run")
+transitions/Run/Idle=SubResource("Transition_Run_Idle")
+transitions/Idle/Jump=SubResource("Transition_Idle_Jump")
+transitions/Run/Jump=SubResource("Transition_Run_Jump")
+transitions/Jump/Idle=SubResource("Transition_Jump_Idle")
+start_node="Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_Idle"]
+animation="Armature|mixamo.com|Layer0|idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_Run"]
+animation="Armature|mixamo.com|Layer0|run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_Jump"]
+animation="Armature|mixamo.com|Layer0|jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="Transition_Idle_Run"]
+advance_mode=AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="Transition_Run_Idle"]
+advance_mode=AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="Transition_Idle_Jump"]
+advance_mode=AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="Transition_Run_Jump"]
+advance_mode=AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="Transition_Jump_Idle"]
+advance_mode=AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO

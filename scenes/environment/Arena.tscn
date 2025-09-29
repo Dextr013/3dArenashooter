@@ -1,10 +1,56 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5nv4j01ke3g1"]
 
-[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaFloor.mesh" id="1_4h311"]
-[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaWall.mesh" id="2_m4pxj"]
-[ext_resource type="Mesh" path="res://scenes/environment/meshes/ArenaPillar.mesh" id="3_0ph85"]
-[ext_resource type="PackedScene" path="res://scenes/environment/SpawnPoint.tscn" id="4_mjb8n"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_Floor"]
+surfaces/0=ArrayMesh.Surface(
+	primitive=Mesh.PRIMITIVE_TRIANGLES,
+	arrays=[
+		PackedVector3Array(Vector3(-20, 0, -20), Vector3(20, 0, -20), Vector3(20, 0, 20), Vector3(-20, 0, 20)),
+		PackedVector3Array(Vector3.UP, Vector3.UP, Vector3.UP, Vector3.UP),
+		PackedVector2Array(Vector2(0, 0), Vector2(4, 0), Vector2(4, 4), Vector2(0, 4)),
+		PackedFloat32Array(),
+		PackedColorArray(),
+		PackedVector2Array(),
+		PackedVector3Array(),
+		PackedVector3Array(),
+		PackedInt32Array(0, 1, 2, 0, 2, 3),
+		PackedInt32Array()
+	]
+)
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_Wall"]
+surfaces/0=ArrayMesh.Surface(
+	primitive=Mesh.PRIMITIVE_TRIANGLES,
+	arrays=[
+		PackedVector3Array(Vector3(-20, 0, 0), Vector3(20, 0, 0), Vector3(20, 10, 0), Vector3(-20, 10, 0)),
+		PackedVector3Array(Vector3(0, 0, -1), Vector3(0, 0, -1), Vector3(0, 0, -1), Vector3(0, 0, -1)),
+		PackedVector2Array(Vector2(0, 0), Vector2(4, 0), Vector2(4, 2), Vector2(0, 2)),
+		PackedFloat32Array(),
+		PackedColorArray(),
+		PackedVector2Array(),
+		PackedVector3Array(),
+		PackedVector3Array(),
+		PackedInt32Array(0, 1, 2, 0, 2, 3),
+		PackedInt32Array()
+	]
+)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_Pillar"]
+surfaces/0=ArrayMesh.Surface(
+	primitive=Mesh.PRIMITIVE_TRIANGLES,
+	arrays=[
+		PackedVector3Array(Vector3(-1.5, 0, -1.5), Vector3(1.5, 0, -1.5), Vector3(1.5, 10, -1.5), Vector3(-1.5, 10, -1.5)),
+		PackedVector3Array(Vector3(0, 0, -1), Vector3(0, 0, -1), Vector3(0, 0, -1), Vector3(0, 0, -1)),
+		PackedVector2Array(Vector2(0, 0), Vector2(1, 0), Vector2(1, 2), Vector2(0, 2)),
+		PackedFloat32Array(),
+		PackedColorArray(),
+		PackedVector2Array(),
+		PackedVector3Array(),
+		PackedVector3Array(),
+		PackedInt32Array(0, 1, 2, 0, 2, 3),
+		PackedInt32Array()
+	]
+)
+[ext_resource type="PackedScene" path="res://scenes/environment/SpawnPoint.tscn" id="4_mjb8n"]
 [node name="Arena" type="Node3D"]
 transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
@@ -14,7 +60,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape=ConcavePolygonShape3D(data=PackedVector3Array(-20, 0, -20, 20, 0, -20, 20, 0, 20, -20, 0, 20))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Floor" index="1"]
-mesh=ExtResource("1_4h311")
+mesh=SubResource("ArrayMesh_Floor")
 surface_material_override/0=SubResource("ArenaMaterial_floor")
 [node name="Walls" type="Node3D" parent="." index="1"]
 
@@ -25,7 +71,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -20)
 shape=BoxShape3D(size=Vector3(40, 10, 1))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="WallNorth" index="1"]
-mesh=ExtResource("2_m4pxj")
+mesh=SubResource("ArrayMesh_Wall")
 surface_material_override/0=SubResource("ArenaMaterial_wall")
 
 [node name="WallSouth" type="StaticBody3D" parent="Walls" index="1"]
@@ -35,7 +81,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20)
 shape=BoxShape3D(size=Vector3(40, 10, 1))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="WallSouth" index="1"]
-mesh=ExtResource("2_m4pxj")
+mesh=SubResource("ArrayMesh_Wall")
 surface_material_override/0=SubResource("ArenaMaterial_wall")
 
 [node name="WallEast" type="StaticBody3D" parent="Walls" index="2"]
@@ -45,7 +91,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, 0)
 shape=BoxShape3D(size=Vector3(1, 10, 40))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="WallEast" index="1"]
-mesh=ExtResource("2_m4pxj")
+mesh=SubResource("ArrayMesh_Wall")
 surface_material_override/0=SubResource("ArenaMaterial_wall")
 
 [node name="WallWest" type="StaticBody3D" parent="Walls" index="3"]
@@ -55,7 +101,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 5, 0)
 shape=BoxShape3D(size=Vector3(1, 10, 40))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="WallWest" index="1"]
-mesh=ExtResource("2_m4pxj")
+mesh=SubResource("ArrayMesh_Wall")
 surface_material_override/0=SubResource("ArenaMaterial_wall")
 
 [node name="Pillars" type="Node3D" parent="." index="2"]
@@ -67,7 +113,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 shape=BoxShape3D(size=Vector3(3, 10, 3))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Pillar1" index="1"]
-mesh=ExtResource("3_0ph85")
+mesh=SubResource("ArrayMesh_Pillar")
 surface_material_override/0=SubResource("ArenaMaterial_pillar")
 
 [node name="Pillar2" type="StaticBody3D" parent="Pillars" index="1"]
@@ -77,7 +123,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
 shape=BoxShape3D(size=Vector3(3, 10, 3))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Pillar2" index="1"]
-mesh=ExtResource("3_0ph85")
+mesh=SubResource("ArrayMesh_Pillar")
 surface_material_override/0=SubResource("ArenaMaterial_pillar")
 
 [node name="Pillar3" type="StaticBody3D" parent="Pillars" index="2"]
@@ -87,7 +133,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
 shape=BoxShape3D(size=Vector3(3, 10, 3))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Pillar3" index="1"]
-mesh=ExtResource("3_0ph85")
+mesh=SubResource("ArrayMesh_Pillar")
 surface_material_override/0=SubResource("ArenaMaterial_pillar")
 
 [node name="Pillar4" type="StaticBody3D" parent="Pillars" index="3"]
@@ -97,7 +143,7 @@ transform=Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 shape=BoxShape3D(size=Vector3(3, 10, 3))
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Pillar4" index="1"]
-mesh=ExtResource("3_0ph85")
+mesh=SubResource("ArrayMesh_Pillar")
 surface_material_override/0=SubResource("ArenaMaterial_pillar")
 
 [node name="SpawnPoints" type="Node3D" parent="." index="3"]
